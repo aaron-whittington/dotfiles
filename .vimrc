@@ -156,23 +156,19 @@ let ruby_fold=1               " Ruby
 let sh_fold_enabled=1         " sh
 let vimsyn_folding='af'       " Vim script
 let xml_syntax_folding=1      " XML
+
 "NeoBundle Scripts-----------------------------
-"te: Skip initialization for vim-tiny or vim-small.
 if !1 | finish | endif
 
 if has('vim_starting')
-	 if &compatible
-		  set nocompatible               
-	 endif
-
-" Required:
+	if &compatible
+		set nocompatible               
+	endif
 set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
-" Required:
 call neobundle#begin(expand('~/.vim/bundle/'))
 " Let NeoBundle manage NeoBundle
-" Required:
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'flazz/vim-colorschemes'
 NeoBundle 'bling/vim-airline'
