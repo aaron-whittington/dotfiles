@@ -106,7 +106,10 @@ set hidden
 "tab settings
 
 " size of a hard tabstop
+filetype plugin indent on
 set tabstop=4
+set shiftwidth=4
+set expandtab
 
 " wild menu
 set wildmenu
@@ -123,15 +126,9 @@ set smartcase
 set showmatch 
 " How many tenths of a second to blink when matching brackets
 set mat=2
+" no matching of arrows in PhP because of array declarations
+au BufWinEnter *.php set mps-=<:>
 
-"
-" " size of an "indent"
-set shiftwidth=4
-"
-" " a combination of spaces and tabs are used to simulate tab stops at a width
-" " other than the (hard)tabstop
-set softtabstop=4
-" switchting between buffers with arrow keys 
 map <left> :bprevious<CR>
 map <right> :bnext<CR>
 " alway show status line
@@ -273,3 +270,19 @@ nnoremap <silent> <C-h> <C-w><C-h>
 nnoremap <silent> <C-j> <C-w><C-j>
 nnoremap <silent> <C-k> <C-w><C-k>
 nnoremap <silent> <C-l> <C-w><C-l>
+
+" Word processor mode (as found in dr. Bunson)
+func! WordProcessorMode() 
+	set formatoptions=1 
+	set noexpandtab 
+	map j gj 
+	map k gk
+	set spell spelllang=en_us 
+	set complete+=s
+	set formatprg=par
+	set wrap 
+	set linebreak 
+	set thesaurus+=/Users/aaronwhittington/Dropbox/mthesaur.txt
+	colorscheme solarized
+endfu 
+com! WP call WordProcessorMode()
