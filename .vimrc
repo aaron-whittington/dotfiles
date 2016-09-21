@@ -286,3 +286,7 @@ func! WordProcessorMode()
 	colorscheme solarized
 endfu 
 com! WP call WordProcessorMode()
+
+command MakePoem !makepoem %:p  
+
+
